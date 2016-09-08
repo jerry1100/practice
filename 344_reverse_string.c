@@ -29,7 +29,6 @@ char* reverseString(char* s)
     // Reorder string
     while (head < tail)
     {
-        //printf("Swapping head: %c, tail: %c\n", *head, *tail);
         char tmp = *head;
         *head = *tail;
         *tail = tmp;
