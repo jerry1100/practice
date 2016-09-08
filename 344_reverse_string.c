@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 char *reverseString(char *s);
-// Given: a pointer to the head of a char string
-// Returns: a pointer to the head of the reversed char string
+// Given: a pointer to a char string
+// Returns: a pointer to the reversed char string
 
 int main()
 {
