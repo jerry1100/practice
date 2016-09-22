@@ -14,7 +14,6 @@ int addDigits(int num);
 
 int main() {
     int testNum;
-
     for (;;) {
         printf("Enter a number: ");
         scanf("%d", &testNum);
