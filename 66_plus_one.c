@@ -53,7 +53,6 @@ int *plusOne(int *digits, int digitsSize, int *returnSize) {
     int i; 
     int carry = 1;
     for (i = 0; i < digitsSize; i++) { // copy from end to beginning
-        
         *(arrTail-i) = *(tail-i) + carry;
         if (*(arrTail-i) > 9) { // if carry, then copy a 0
             *(arrTail-i) = 0;
@@ -62,12 +61,13 @@ int *plusOne(int *digits, int digitsSize, int *returnSize) {
             carry = 0;
         }
     }
-    if (carry) { // if carry remaining, then carry over to very front
 
+    if (carry) { // if carry remaining, then carry over to very front
         *arrHead = 1;
         *returnSize = digitsSize+1;
         return arrHead;
     }
+
     *returnSize = digitsSize;
     return arrHead+1;
 }
