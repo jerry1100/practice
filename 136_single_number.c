@@ -17,7 +17,6 @@ int main() {
 }
 
 int singleNumber(int *nums, int numsSize) {
-
     int result = 0;
 
     // XOR all numbers, erasing duplicates and leaving the single number
