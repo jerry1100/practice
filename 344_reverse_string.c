@@ -11,8 +11,7 @@ char *reverseString(char *s);
 // Given: a pointer to a char string
 // Returns: a pointer to the reversed char string
 
-int main()
-{
+int main() {
     // Before
     char str[] = "0123456789";
     int i = 0;
@@ -25,8 +24,7 @@ int main()
     putchar('\n');
 }
 
-char* reverseString(char* s)
-{
+char* reverseString(char* s) {
     if (!s || !*s) return s; // handle bad input
 
     char *head = s;
@@ -34,8 +32,7 @@ char* reverseString(char* s)
     while (*(tail+1) != '\0') tail++; // pointer to end of string
    
     // Reorder string
-    while (head < tail)
-    {
+    while (head < tail) {
         char tmp = *head;
         *head = *tail;
         *tail = tmp;
