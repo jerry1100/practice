@@ -33,10 +33,10 @@ int getSum(int a, int b) {
 
         // Possible combinations
         if (bitA ^ bitB) {
-            sum += !carry*mask;
+            sum |= !carry*mask;
         } else {
-            sum += carry*mask;
-            carry = (bitA & bitB) ? 1: 0;
+            sum |= carry*mask;
+            carry = (bitA && bitB);
         }
     }
     return sum;
