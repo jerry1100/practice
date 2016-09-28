@@ -24,30 +24,19 @@ int main() {
 int getSum(int a, int b) {
     int sum = 0;
     int carry = 0;
+
+    // Compare bits starting from least significant to most significant
     long int mask;
-    for (mask = 1; mask <= 2147483648; mask <<= 1) { // check all bits starting from end
+    for (mask = 1; mask <= 2147483648; mask <<= 1) {
         int bitA = a & mask;
         int bitB = b & mask;
 
         // Possible combinations
-        if (carry) {
-            if (bitA & bitB) { // two 1s and carry
-                sum |= mask;
-                carry = 1;
-            } else if (bitA ^ bitB) { // one 1 and carry
-                carry = 1;
-            } else { // just carry
-                sum |= mask;
-                carry = 0;
-            }
+        if (bitA ^ bitB) {
+            sum += !carry*mask;
         } else {
-            if (bitA & bitB) { // two 1s
-                carry = 1;
-            } else if (bitA ^ bitB) { // one 1
-                sum |= mask;
-            } else { // nothing
-                carry = 0;
-            }
+            sum += carry*mask;
+            carry = (bitA & bitB) ? 1: 0;
         }
     }
     return sum;
