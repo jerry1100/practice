@@ -1,2 +1,3 @@
-# leetcode
-Where I store all the leetcode problems I did
+# Coding Practice
+- Leetcode problems
+- Algorithm tests
