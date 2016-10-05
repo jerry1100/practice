@@ -12,7 +12,7 @@ int *plusOne(int *digits, int digitsSize, int *returnSize);
 // Returns: add one to the number and return the result as an array of digits
 
 int main() {
-    int num1[] = {0, 2, 3, 4, 5, 6, 7};
+    int num1[] = {1, 2, 3, 4, 5, 6, 7};
     int num2[] = {9, 9, 9, 9, 9, 9, 9};
     int i;
     int size;
@@ -69,6 +69,5 @@ int *plusOne(int *digits, int digitsSize, int *returnSize) {
     }
 
     *returnSize = digitsSize;
-    free(arrHead); // free up unused first element
     return arrHead+1;
 }
