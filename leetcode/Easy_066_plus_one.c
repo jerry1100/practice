@@ -69,5 +69,6 @@ int *plusOne(int *digits, int digitsSize, int *returnSize) {
     }
 
     *returnSize = digitsSize;
+    free(arrHead); // free up unused first element
     return arrHead+1;
 }
