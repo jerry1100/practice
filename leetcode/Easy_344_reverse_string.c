@@ -12,16 +12,10 @@ char *reverseString(char *s);
 // Returns: a pointer to the reversed char string
 
 int main() {
-    // Before
     char str[] = "0123456789";
-    int i = 0;
-    while (str[i] != '\0') putchar(str[i++]);
-    putchar('\n');
 
-    // After
-    char *revStr = reverseString(str);
-    while (*revStr != '\0') putchar(*revStr++);
-    putchar('\n');
+    printf("Before: %s\n", str);
+    printf("After: %s\n", reverseString(str));
 }
 
 char* reverseString(char* s) {
