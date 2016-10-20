@@ -18,9 +18,9 @@ void printArray(int *arr, int size);
 // Prints out the contents of the array
 
 int main() {
-    int size = 5;
+    int size = 8;
     int *arr = createArray(size);
-    int appendNum = 32; // num to append to end of array
+    int appendNum = 777; // num to append to end of array
 
     int i;
     for (i = 0; i < size; i++) { // fill in array with elements
@@ -40,7 +40,7 @@ int *createArray(int size) {
 }
 
 void appendArray(int *arr, int *size, int num) {
-    arr = (int *) realloc(arr, (*size+1)*sizeof(int));
+    arr = (int *) realloc(arr, (*size+1)*sizeof(int)); // allocate more memory
     *(arr+*size) = num; // append element to array
     *size += 1;
 }
