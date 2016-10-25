@@ -23,9 +23,8 @@ int sumDigitsSquared(int n);
 // Returns: the sum of the integer's digits squared
 
 int main() {
-    int num;
-
     for (;;) {
+        int num;
         printf("Enter a number: ");
         scanf("%d", &num);
         printf("%d is%sa happy number\n\n", num, isHappy(num) ? " " : " not ");
