@@ -56,7 +56,7 @@ int *createArray(int size) {
 
 void appendArray(int *arr, int *size, int num) {
     arr = (int *) realloc(arr, (*size+1)*sizeof(int)); // allocate more memory
-    *(arr+*size) = num; // append element to array
+    arr[*size] = num; // append element to array
     *size += 1;
 }
 
@@ -66,13 +66,13 @@ void printArray(int *arr, int size, int flag) {
     if (flag) { // print out elements and addresses
         printf("{\n");
         for (i = 0; i < size; i++) {
-            printf("\t%p: %d\n", arr+i, *(arr+i));
+            printf("\t%p: %d\n", arr+i, arr[i]);
         }
         printf("}\n");
     } else { // print just elements
         printf("{");
         for (i = 0; i < size; i++) {
-            printf(" %d ", *(arr+i));
+            printf(" %d ", arr[i]);
         }
         printf("}\n");
     }

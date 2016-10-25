@@ -42,7 +42,7 @@ bool isHappy(int n) {
     do {
         slow = sumDigitsSquared(slow); // go forward one step
         fast = sumDigitsSquared(sumDigitsSquared(fast)); // go forward two steps
-    } while (fast != 1 && != slow);
+    } while (fast != 1 && fast != slow);
     
     return (fast == 1);
 }
