@@ -23,7 +23,7 @@ bool isPowerOfTwo(int n) {
     
     // Get the first 1 from binary representation
     int mask = 1;
-    int bit = 0;
+    int bit;
     do {
         bit = n & mask;
         n -= bit; // subtracting bit should be 0 if the bit was the only one

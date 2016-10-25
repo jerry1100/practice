@@ -15,32 +15,26 @@ bool isPowerOfFour(int num);
 // Returns: whether it is a power of 4
 
 int main() {
-    int i;
-    for (i = 0; i < 0b1111111111111111111111111111111; i++) {
-        if (isPowerOfFour(i)) {
-            printf("%d is a power of four\n", i);
-        }
+    for (;;) {
+        int num;
+        printf("Enter a number: ");
+        scanf("%d", &num);
+
+        printf("%d is %sa power of 4\n", num, isPowerOfFour(num) ? "" : "not ");
     }
 }
 
 bool isPowerOfFour(int num) {
-    switch (num) { // test individually for powers of 4
-        case 0b00000000000000000000000000000001:
-        case 0b00000000000000000000000000000100:
-        case 0b00000000000000000000000000010000:
-        case 0b00000000000000000000000001000000:
-        case 0b00000000000000000000000100000000:
-        case 0b00000000000000000000010000000000:
-        case 0b00000000000000000001000000000000:
-        case 0b00000000000000000100000000000000:
-        case 0b00000000000000010000000000000000:
-        case 0b00000000000001000000000000000000:
-        case 0b00000000000100000000000000000000:
-        case 0b00000000010000000000000000000000:
-        case 0b00000001000000000000000000000000:
-        case 0b00000100000000000000000000000000:
-        case 0b00010000000000000000000000000000:
-        case 0b01000000000000000000000000000000: return true;
-        default: return false;
-    }
+    if (num < 1) return false;
+    
+    // Get first 1 from binary representation
+    int mask = 1;
+    int bit;
+    do {
+        bit = num & mask;
+        num -= bit; // subtracting bit should be 0 if the bit was the only one
+        mask = mask << 2;
+    } while (!bit && mask > 0); // stop at first bit received or overflow
+
+    return bit && !num; // true if retrieved bit was the only bit
 }
