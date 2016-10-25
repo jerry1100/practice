@@ -21,17 +21,14 @@ int main() {
 bool isPowerOfTwo(int n) {
     if (n < 1) return false;
     
-    // Check for only one 1 in binary representation
+    // Get the first 1 from binary representation
+    int mask = 1;
     int bit = 0;
-    int mask;
-    for (mask = 1; mask > 0; mask <<= 1) {
-
-        // Retrieve bit and remove it from original
-        if (bit = n & mask) {
-            n -= bit;
-            break;
-        }
-    }
+    do {
+        bit = n & mask;
+        n -= bit; // subtracting bit should be 0 if the bit was the only one
+        mask = mask << 1;
+    } while (!bit);
 
     return bit && !n; // true if retrieved bit was the only bit
 }
