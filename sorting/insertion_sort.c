@@ -3,7 +3,6 @@ Insertion sort algorithm to sort an array of integers
 */
 
 #include <stdio.h>
-#include <stdlib.h>
 
 void insertionSort(int *nums, int size);
 // Given: array of integers and length of array
@@ -20,7 +19,7 @@ int main() {
         while (scanf("%d%c", &arr[size++], &ch) && ch != '\n');
 
         // Unsorted
-        printf("Unsorted: {");
+        printf("\nUnsorted: {");
         int i;
         for (i = 0; i < size; i++) {
             printf(" %d ", arr[i]);
@@ -38,12 +37,43 @@ int main() {
 }
 
 void insertionSort(int *nums, int size) {
+    #ifdef DEBUG
+    printf("\n**********BEGIN DEBUG**********");
+    #endif
+
+    // Loop through elements, starting at position 2
     int i, j;
-    for (i = 1; i < size; i++) { // go through elements, starting at second
-        for (j = i; nums[j] < nums[j-1] && j > 0; j--) { // find correct spot
-            int temp = nums[j]; // swap elements
+    for (i = 1; i < size; i++) {
+        #ifdef DEBUG
+        printf("\nAt position %d, value %d\n", i, nums[i]);
+        printf("Old: {");
+        int k;
+        for (k = 0; k < size; k++) {
+            printf(" %d ", nums[k]);
+        }
+        printf("}\n");
+        #endif
+
+        // While current element is less than previous, swap them
+        for (j = i; nums[j] < nums[j-1] && j > 0; j--) {
+            #ifdef DEBUG
+            printf("Swapping %d and %d\n", nums[j], nums[j-1]);
+            #endif
+
+            int temp = nums[j];
             nums[j] = nums[j-1];
             nums[j-1] = temp;
         }
+
+        #ifdef DEBUG
+        printf("New: {");
+        for (k = 0; k < size; k++) {
+            printf(" %d ", nums[k]);
+        }
+        printf("}\n");
+        #endif
     }
+    #ifdef DEBUG
+    printf("**********END DEBUG**********\n\n");
+    #endif
 }
