@@ -37,7 +37,7 @@ int main() {
         // Get command
         char cmd;
         clock_t clk;
-        printf("Enter (i)nsertion, (q)uick, (m)erge, or (r)estart: ");
+        printf("Test (i)nsertion, (q)uick, (m)erge: ");
         while (scanf("%c", &cmd) != 1) {
             while (getchar() != '\n'); // flush buffer
             printf("Invalid input! Enter a valid command: ");
