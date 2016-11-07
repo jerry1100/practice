@@ -1,10 +1,10 @@
 /*
-Insertion sort algorithm to sort an array of integers
+Selection sort algorithm to sort an array of integers
 */
 
 #include <stdio.h>
 
-void insertionSort(int *nums, int size);
+void selectionSort(int *nums, int size);
 // Given: array of integers and length of array
 // Array elements will be sorted in ascending order
 
@@ -27,7 +27,7 @@ int main() {
         printf("}\n");
 
         // Sorted
-        insertionSort(arr, size);
+        selectionSort(arr, size);
         printf("Sorted: {");
         for (i = 0; i < size; i++) {
             printf(" %d ", arr[i]);
@@ -36,16 +36,22 @@ int main() {
     }
 }
 
-void insertionSort(int *nums, int size) {
+void selectionSort(int *nums, int size) {
     int current, i;
 
-    // For each element, insert it in the proper location
-    for (current = 1; current < size; current++) {
-        // Keep swapping until hit left wall or left num is lesser
-        for (i = current; i > 0 && nums[i] < nums[i-1]; i--) {
-            int tmp = nums[i];
-            nums[i] = nums[i-1];
-            nums[i-1] = tmp;
+    // For each element, replace it with the minimum of the rest of elements
+    for (current = 0; current < size-1; current++) {
+        int minIndex = current;
+        int minValue = nums[current];
+
+        for (i = current+1; i < size; i++) { // find minimum value
+            if (nums[i] < minValue) {
+                minIndex = i;
+                minValue = nums[i];
+            }
         }
+
+        nums[minIndex] = nums[current]; // swap minimum and current
+        nums[current] = minValue;
     }
 }

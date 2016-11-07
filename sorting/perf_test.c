@@ -6,17 +6,13 @@ Performance test that compares runtimes for different sorting algorithms
 #include <stdlib.h>
 #include <time.h>
 
-void insertionSort(int *nums, int size);
-// Given: array of integers and length of array
-// Array elements will be sorted in ascending order
-
 int main() {
     srand(time(NULL)); // use time to randomize
 
     for (;;) {
         // Get number of random array elements to generate
         int size;
-        printf("\nEnter the number of random array elements to generate: ");
+        printf("Enter the number of random array elements to generate: ");
         while (scanf("%d", &size) != 1) {
             while (getchar() != '\n'); // flush buffer
             printf("Invalid input! Enter number of elements: ");
@@ -49,38 +45,25 @@ int main() {
         switch (cmd) {
             case 'i':
                 clk = clock();
-                insertionSort(arr, size);
+                //insertionSort(arr, size);
                 clk = clock() - clk;
-                printf("Insertion sort took %li clock cycles\n", clk);
+                printf("Insertion sort took %li clock cycles\n\n", clk);
                 break;
             case 'q':
                 clk = clock();
                 //quickSort();
                 clk = clock() - clk;
-                printf("Quick sort took %li clock cycles\n", clk);
+                printf("Quick sort took %li clock cycles\n\n", clk);
                 break;
             case 'm':
                 clk = clock();
                 //mergeSort();
                 clk = clock() - clk;
-                printf("Merge sort took %li clock cycles\n", clk);
+                printf("Merge sort took %li clock cycles\n\n", clk);
                 break;
             default:
-                printf("Invalid choice, restarting program\n");
+                printf("Invalid choice, restarting program\n\n");
                 break;
        }
-    }
-}
-
-void insertionSort(int *nums, int size) {
-    // Loop through elements, starting at position 2
-    int i, j;
-    for (i = 1; i < size; i++) {
-        // While current element is less than previous, swap them
-        for (j = i; nums[j] < nums[j-1] && j > 0; j--) {
-            int temp = nums[j];
-            nums[j] = nums[j-1];
-            nums[j-1] = temp;
-        }
     }
 }
