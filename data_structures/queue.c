@@ -18,7 +18,7 @@ void dequeue(Node **head);
 // Given: double pointer to head of queue
 // Removes head of queue and updates head pointer
 
-void printQueue(Node *head);
+void print_queue(Node *head);
 // Given: pointers to head and tail of queue
 // Prints out the elements in the queue
 
@@ -39,12 +39,12 @@ int main() {
                 scanf("%d", &num);
                 while (getchar() != '\n'); // remove trailing chars in stdin
                 enqueue(&head, &tail, num);
-                printQueue(head);
+                print_queue(head);
                 break;
             }
             case 'd':
                 dequeue(&head);
-                printQueue(head);
+                print_queue(head);
                 break;
             case 'q': return 0;
             default:
@@ -54,16 +54,16 @@ int main() {
 }
 
 void enqueue(Node **head, Node **tail, int num) {
-    Node *newNode = (Node *) malloc(sizeof(Node));
-    newNode->val = num;
-    newNode->next = NULL;
+    Node *new_node = (Node *) malloc(sizeof(Node));
+    new_node->val = num;
+    new_node->next = NULL;
 
     if (*head == NULL) { // queue is empty so set head and tail
-        *head = newNode;
-        *tail = newNode;
+        *head = new_node;
+        *tail = new_node;
     } else { // queue is not empty so add node and update tail
-        (*tail)->next = newNode;
-        *tail = newNode;
+        (*tail)->next = new_node;
+        *tail = new_node;
     }
 }
 
@@ -75,7 +75,7 @@ void dequeue(Node **head) {
     }
 }
 
-void printQueue(Node *head) {
+void print_queue(Node *head) {
     printf("Queue:");
     while (head != NULL) {
         printf(" %d", head->val);
