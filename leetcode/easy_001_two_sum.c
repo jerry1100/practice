@@ -18,15 +18,34 @@ int *twoSum(int *nums, int numsSize, int target);
 // Returns: indices of array elements that add up to target integer
 
 int main() {
+    for (;;) {
+        int arr[1000];
+        int size = 0;
+        int target;
 
+        // Keep reading until the end of line
+        printf("Enter target and numbers, separated by spaces: ");
+        scanf("%d", &target);
+        char ch;
+        while (scanf("%d%c", &arr[size++], &ch) && ch != '\n');
+
+        // Print result
+        int *result = twoSum(arr, size, target);
+        printf("Index1: %d, value: %d\n", result[0], arr[result[0]]);
+        printf("Index2: %d, value: %d\n", result[1], arr[result[1]]);
+        printf("Target: %d\n", target);
+    }
 }
 
 int *twoSum(int *nums, int numsSize, int target) {
     int i, j;
     for (i = 0; i < numsSize-1; i++) {
         for (j = i+1; j < numsSize; j++) {
-            if (nums[i][j] == target) {
-                
+            if (nums[i] + nums[j] == target) {
+                int *result = (int *) malloc(2*sizeof(int));
+                result[0] = i;
+                result[1] = j;
+                return result;
             }
         }
     }

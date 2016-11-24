@@ -23,13 +23,12 @@ int main() {
         int num;
         printf("Enter a number: ");
         scanf("%d", &num);
-
         int size;
         int *arr = countBits(num, &size);
 
         int i;
         for (i = 0; i < size; i++) {
-            if ((i & (i-1)) == 0) { // every power of 2 is a new section
+            if ((i & (i-1)) == 0) { // print every power of 2 on newline
                 printf("\n[%d]", i);
             }
             printf(" %d ", arr[i]);
@@ -43,16 +42,15 @@ int *countBits(int num, int *returnSize) {
     *returnSize = num+1;
 
     arr[0] = 0;
-    int counter = 1; // keep track of where in the pattern to copy from
+    int counter = 0; // keep track of current position in pattern
     int i;
     for (i = 1; i <= num; i++) {
-        if ((i & (i-1)) == 0) { // check if power of 2
-            arr[i] = 1;
-            counter = 1; // start of a new section, go back to pattern start
+        if ((i & (i-1)) == 0) { // if power of 2 go back to start of pattern
+            counter = 0;
         } else {
-            arr[i] = arr[counter] + 1; // add one to pattern for new pattern
-            counter++;
+            counter++; // go to next position in pattern
         }
+        arr[i] = arr[counter] + 1;
     }
 
     return arr;
