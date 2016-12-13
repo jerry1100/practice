@@ -22,8 +22,8 @@ char *dec_to_bin(int num) {
     // Find the number of bits needed
     int tmp = num;
     int num_bits;
-    for (num_bits = 0; tmp != 0; num_bits++) {
-        tmp /= 2;
+    for (num_bits = 1; tmp > 1; num_bits++) {
+        tmp = tmp >> 1;
     }
 
     char *bin_str = (char *) malloc((num_bits+1)*sizeof(char));
@@ -31,8 +31,8 @@ char *dec_to_bin(int num) {
     // Fill in binary string in reversed order
     int i;
     for (i = num_bits-1; i >= 0; i--) {
-        bin_str[i] = num % 2 + '0';
-        num /= 2;
+        bin_str[i] = num % 2 + '0'; // get char version of num
+        num = num >> 1;
     }
     bin_str[num_bits] = '\0';
 
