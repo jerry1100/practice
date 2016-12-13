@@ -24,16 +24,16 @@ int main() {
         int target;
 
         // Keep reading until the end of line
-        printf("Enter target and numbers, separated by spaces: ");
+        printf("Enter target then numbers, separated by spaces: ");
         scanf("%d", &target);
         char ch;
         while (scanf("%d%c", &arr[size++], &ch) && ch != '\n');
 
         // Print result
         int *result = twoSum(arr, size, target);
+        printf("Target: %d\n", target);
         printf("Index1: %d, value: %d\n", result[0], arr[result[0]]);
         printf("Index2: %d, value: %d\n", result[1], arr[result[1]]);
-        printf("Target: %d\n", target);
     }
 }
 
