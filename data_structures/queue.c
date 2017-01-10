@@ -10,21 +10,27 @@ typedef struct Node {
     struct Node *next;
 } Node;
 
-void enqueue(Node **head, Node **tail, int num);
-// Given: double pointers to head and tail of queue, and integer
-// Update head and tail and adds new node with value num
+typedef struct Queue {
+    Node *head;
+    Node *tail;
+} Queue;
 
-void dequeue(Node **head);
-// Given: double pointer to head of queue
-// Removes head of queue and updates head pointer
+void enqueue(Queue *queue, int num);
+// Given: pointer to a queue and the integer to be added
+// Adds integer to the end of queue
 
-void print_queue(Node *head);
-// Given: pointers to head and tail of queue
-// Prints out the elements in the queue
+void dequeue(Queue *queue);
+// Given: pointer to a queue
+// Removes the head of the queue
+
+void print_queue(const Queue *queue);
+// Given: pointer to a queue
+// Prints out the contents of the queue
 
 int main() {
-    Node *head = NULL;
-    Node *tail = NULL;
+    Queue queue;
+    queue.head = NULL;
+    queue.tail = NULL;
 
     for (;;) {
         printf("\nEnter (e)nqueue, (d)equeue or (q)uit: ");
@@ -38,13 +44,13 @@ int main() {
                 int num;
                 scanf("%d", &num);
                 while (getchar() != '\n'); // remove trailing chars in stdin
-                enqueue(&head, &tail, num);
-                print_queue(head);
+                enqueue(&queue, num);
+                print_queue(&queue);
                 break;
             }
             case 'd':
-                dequeue(&head);
-                print_queue(head);
+                dequeue(&queue);
+                print_queue(&queue);
                 break;
             case 'q': return 0;
             default:
@@ -53,33 +59,34 @@ int main() {
     }
 }
 
-void enqueue(Node **head, Node **tail, int num) {
+void enqueue(Queue *queue, int num) {
     Node *new_node = (Node *) malloc(sizeof(Node));
     new_node->val = num;
     new_node->next = NULL;
 
-    if (*head == NULL) { // queue is empty so set head and tail
-        *head = new_node;
-        *tail = new_node;
+    if (queue->head == NULL) { // queue is empty so set head and tail
+        queue->head = new_node;
+        queue->tail = new_node;
     } else { // queue is not empty so add node and update tail
-        (*tail)->next = new_node;
-        *tail = new_node;
+        queue->tail->next = new_node;
+        queue->tail = new_node;
     }
 }
 
-void dequeue(Node **head) {
-    if (*head != NULL) {
-        Node *tmp = (*head)->next;
-        free(*head);
-        *head = tmp;
+void dequeue(Queue *queue) {
+    if (queue->head != NULL) {
+        Node *tmp = queue->head->next;
+        free(queue->head);
+        queue->head = tmp;
     }
 }
 
-void print_queue(Node *head) {
-    printf("Queue:");
-    while (head != NULL) {
-        printf(" %d", head->val);
-        head = head->next;
+void print_queue(const Queue *queue) {
+    Node *tmp = queue -> head;
+    printf("Queue: {");
+    while (tmp != NULL) {
+        printf(" %d", tmp->val);
+        tmp = tmp->next;
     }
-    printf("\n");
+    printf(" }\n");
 }
