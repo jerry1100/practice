@@ -15,6 +15,10 @@ typedef struct Queue {
     Node *tail;
 } Queue;
 
+void init_queue(Queue *queue);
+// Given: pointer to a queue
+// Initializes the queue
+
 void enqueue(Queue *queue, int num);
 // Given: pointer to a queue and the integer to be added
 // Adds integer to the end of queue
@@ -29,8 +33,7 @@ void print_queue(const Queue *queue);
 
 int main() {
     Queue queue;
-    queue.head = NULL;
-    queue.tail = NULL;
+    init_queue(&queue);
 
     for (;;) {
         printf("\nEnter (e)nqueue, (d)equeue or (q)uit: ");
@@ -57,6 +60,11 @@ int main() {
                 printf("Invalid option\n");
         }
     }
+}
+
+void init_queue(Queue *queue) {
+    queue->head = NULL;
+    queue->tail = NULL;
 }
 
 void enqueue(Queue *queue, int num) {

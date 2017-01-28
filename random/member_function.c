@@ -1,0 +1,3 @@
+/*
+Testing out creating member functions inside structs through the use of function pointers
+*/

@@ -38,15 +38,26 @@ int main() {
 }
 
 int *twoSum(int *nums, int numsSize, int target) {
-    int i, j;
-    for (i = 0; i < numsSize-1; i++) {
-        for (j = i+1; j < numsSize; j++) {
-            if (nums[i] + nums[j] == target) {
-                int *result = (int *) malloc(2*sizeof(int));
-                result[0] = i;
-                result[1] = j;
-                return result;
-            }
+    int low = 0;
+    int high = numsSize - 1;
+
+    // Sort the array
+
+    // Move high index or low index to narrow down sum
+    while (low < high) {
+        int sum = nums[low] + nums[high];
+
+        if (sum == target) { // target found
+            int *result = (int *) malloc(2*sizeof(int));
+            result[0] = low;
+            result[1] = high;
+            return result;
+        } else if (sum > target) { // overshot, sum too high
+            high--;
+        } else { // undershot, sum too low
+            low++;
         }
     }
+
+    return NULL;
 }
