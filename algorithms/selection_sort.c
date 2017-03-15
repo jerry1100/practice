@@ -16,7 +16,7 @@ int main() {
         // Keep reading until the end of line
         printf("Enter array elements, separate by spaces: ");
         char ch;
-        while (scanf("%d%c", &arr[size++], &ch) && ch != '\n');
+        while (scanf("%d%c", &arr[size++], &ch), ch != '\n');
 
         // Unsorted
         printf("Unsorted: {");
