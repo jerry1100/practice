@@ -8,6 +8,10 @@
    initialize a new variable using the type and value of an existing variable,
    whereas 'decltype' just declares a new variable using the type of an
    existing variable.
+
+   This can be useful in situations where explicitly typing out the type of a
+   variable reduces code readibility, such as types with a long or complex
+   name.
  */
 
 #include <iostream>
