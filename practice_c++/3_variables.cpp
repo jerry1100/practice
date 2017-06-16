@@ -14,8 +14,8 @@
    than a defined size--so different compilers may define the same type to use
    different amounts of memory.
 
-   Variables can be initialized in three ways: c-like initialization, constructor
-   initialization, and uniform initialization.
+   Variables can be initialized in three ways: c-like initialization,
+   constructor initialization, and uniform initialization.
  */
 
 #include <iostream>
